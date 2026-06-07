@@ -38,7 +38,7 @@ Na seção **"Environment Variables"**, adicione:
 
 | Chave | Valor |
 |-------|-------|
-| `SECRET_KEY` | `83255122e77de7a2c5ad35c013f8577a8659b74880291ac6533f05108e7a73de` |
+| `SECRET_KEY` | *(gerada localmente — ver arquivo `.env`)* |
 | `FLASK_ENV` | `production` |
 | `DADOS_JSON_PATH` | `/opt/render/project/src/dados_dashboard.json` |
 
