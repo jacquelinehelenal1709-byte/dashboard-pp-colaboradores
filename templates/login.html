@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<div class="login-bg">
+  <div class="login-card card p-4 p-md-5 mx-3">
+    <div class="text-center mb-4">
+      <div class="login-logo mb-1">
+        Farma<span>Nello</span>
+      </div>
+      <p class="login-subtitle mb-0">Painel de Performance — Colaboradores</p>
+    </div>
+
+    {% if msg_info %}
+    <div class="alert alert-info py-2 small" role="alert">
+      <i class="bi bi-info-circle me-1"></i>{{ msg_info }}
+    </div>
+    {% endif %}
+
+    {% if error %}
+    <div class="alert alert-danger py-2 small" role="alert">
+      <i class="bi bi-exclamation-triangle me-1"></i>{{ error }}
+    </div>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('auth.login') }}" autocomplete="off">
+      <div class="mb-3">
+        <label class="form-label small fw-semibold" for="login">Usuário</label>
+        <input type="text" id="login" name="login" class="form-control"
+               placeholder="seu.login" required autofocus autocomplete="username">
+      </div>
+      <div class="mb-4">
+        <label class="form-label small fw-semibold" for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" class="form-control"
+               placeholder="••••••••" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn btn-primary w-100 fw-semibold" style="background:#1A2B4A;border-color:#1A2B4A;">
+        <i class="bi bi-box-arrow-in-right me-1"></i>Entrar
+      </button>
+    </form>
+
+    <p class="text-center mt-4 mb-0" style="font-size:0.7rem;color:#9CA3AF;">
+      Acesso restrito. Fale com o administrador se precisar de ajuda.
+    </p>
+  </div>
+</div>
+{% endblock %}

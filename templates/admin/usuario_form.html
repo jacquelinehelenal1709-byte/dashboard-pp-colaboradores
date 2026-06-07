@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% block title %}{{ 'Novo usuário' if modo == 'novo' else 'Editar usuário' }}{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-fn py-2 px-3">
+  <span class="navbar-brand">Farma<span style="color:#2563EB;">Nello</span>
+    <small class="ms-2 opacity-50" style="font-size:0.7rem;">ADMIN</small>
+  </span>
+  <div class="d-flex align-items-center gap-2">
+    <a href="{{ url_for('admin.index') }}" class="btn-logout text-decoration-none">
+      <i class="bi bi-arrow-left me-1"></i>Voltar
+    </a>
+  </div>
+</nav>
+
+<div class="container py-4" style="max-width:540px;">
+  <h5 class="fw-bold mb-4">{{ 'Novo usuário' if modo == 'novo' else 'Editar usuário' }}</h5>
+
+  {% if error %}
+  <div class="alert alert-danger py-2 small">
+    <i class="bi bi-exclamation-triangle me-1"></i>{{ error }}
+  </div>
+  {% endif %}
+
+  <div class="card border-0 shadow-sm p-4">
+    <form method="POST">
+
+      <div class="mb-3">
+        <label class="form-label small fw-semibold" for="nome">Nome completo <span class="text-danger">*</span></label>
+        <input type="text" id="nome" name="nome" class="form-control"
+               value="{{ usuario.nome if usuario else '' }}" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label small fw-semibold" for="login">Login <span class="text-danger">*</span></label>
+        <input type="text" id="login" name="login" class="form-control"
+               value="{{ usuario.login if usuario else '' }}"
+               required placeholder="ex: gestor.matriz">
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-6">
+          <label class="form-label small fw-semibold" for="perfil">Perfil <span class="text-danger">*</span></label>
+          <select id="perfil" name="perfil" class="form-select" required onchange="toggleLoja(this.value)">
+            <option value="">Selecione...</option>
+            {% for p in perfis %}
+            <option value="{{ p }}" {{ 'selected' if usuario and usuario.perfil == p }}>{{ p }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-6" id="loja-field">
+          <label class="form-label small fw-semibold" for="loja">Loja</label>
+          <select id="loja" name="loja" class="form-select">
+            <option value="">— Nenhuma —</option>
+            {% for l in lojas %}
+            <option value="{{ l }}" {{ 'selected' if usuario and usuario.loja == l }}>{{ loja_labels[l] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      {% if modo == 'novo' %}
+      <div class="row g-3 mb-3">
+        <div class="col-6">
+          <label class="form-label small fw-semibold" for="senha">Senha <span class="text-danger">*</span></label>
+          <input type="password" id="senha" name="senha" class="form-control" required minlength="8">
+        </div>
+        <div class="col-6">
+          <label class="form-label small fw-semibold" for="confirmar_senha">Confirmar senha</label>
+          <input type="password" id="confirmar_senha" name="confirmar_senha" class="form-control" required minlength="8">
+        </div>
+      </div>
+      {% else %}
+      <div class="mb-3">
+        <label class="form-label small fw-semibold" for="nova_senha">Nova senha <span class="text-muted fw-normal">(deixe em branco para não alterar)</span></label>
+        <input type="password" id="nova_senha" name="nova_senha" class="form-control" minlength="8">
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="ativo" name="ativo"
+               {{ 'checked' if usuario and usuario.ativo }}
+               {{ 'disabled' if usuario and usuario.id == current_user_id }}>
+        <label class="form-check-label small" for="ativo">Conta ativa</label>
+        {% if usuario and usuario.id == current_user_id %}
+        <small class="text-muted d-block">Você não pode desativar sua própria conta.</small>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <div class="d-flex gap-2 pt-2">
+        <button type="submit" class="btn btn-primary" style="background:#1A2B4A;border-color:#1A2B4A;">
+          <i class="bi bi-check-lg me-1"></i>Salvar
+        </button>
+        <a href="{{ url_for('admin.index') }}" class="btn btn-outline-secondary">Cancelar</a>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+{% block scripts %}
+<script>
+function toggleLoja(perfil) {
+  var loja = document.getElementById('loja-field');
+  var gestores = ['gestor_matriz','gestor_piraquara1','gestor_piraquara2','gestor_maria_antonieta'];
+  loja.style.opacity = gestores.includes(perfil) ? '1' : '0.4';
+}
+document.addEventListener('DOMContentLoaded', function() {
+  toggleLoja(document.getElementById('perfil').value);
+});
+</script>
+{% endblock %}
+{% endblock %}

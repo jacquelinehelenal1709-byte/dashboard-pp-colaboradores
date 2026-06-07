@@ -1,0 +1,207 @@
+:root {
+    --fn-navy:       #1A2B4A;
+    --fn-accent:     #2563EB;
+    --fn-verde:      #16A34A;
+    --fn-verde-bg:   #DCFCE7;
+    --fn-amber:      #D97706;
+    --fn-amber-bg:   #FEF3C7;
+    --fn-verm:       #DC2626;
+    --fn-verm-bg:    #FEE2E2;
+    --fn-page-bg:    #F3F4F8;
+    --fn-text1:      #111827;
+    --fn-text2:      #6B7280;
+    --fn-text3:      #9CA3AF;
+    --fn-border:     #E5E7EB;
+    --fn-info-bg:    #EEF2FF;
+}
+
+body { background-color: var(--fn-page-bg); color: var(--fn-text1); }
+
+/* ── Navbar ─────────────────────────────────────────────────────────────── */
+.navbar-fn { background-color: var(--fn-navy); }
+.navbar-fn .navbar-brand { color: #fff; font-weight: 700; letter-spacing: 0.02em; }
+.navbar-fn .nav-text { color: rgba(255,255,255,0.75); font-size: 0.875rem; }
+.navbar-fn .btn-logout {
+    color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    background: transparent;
+    transition: background .15s;
+}
+.navbar-fn .btn-logout:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+/* ── Badge atualização ───────────────────────────────────────────────────── */
+.update-bar {
+    background: var(--fn-info-bg);
+    border-bottom: 1px solid var(--fn-border);
+    font-size: 0.8rem;
+    color: var(--fn-text2);
+}
+
+/* ── KPI cards ───────────────────────────────────────────────────────────── */
+.kpi-card {
+    background: #fff;
+    border: 1px solid var(--fn-border);
+    border-radius: 10px;
+    padding: 14px 18px;
+}
+.kpi-label { font-size: 0.7rem; text-transform: uppercase; color: var(--fn-text3); }
+.kpi-value { font-size: 1.25rem; font-weight: 700; color: var(--fn-text1); }
+.kpi-value.verde  { color: var(--fn-verde); }
+.kpi-value.amber  { color: var(--fn-amber); }
+.kpi-value.verm   { color: var(--fn-verm); }
+
+/* ── Colaborador card ────────────────────────────────────────────────────── */
+.card-collab {
+    border-radius: 10px;
+    border: 0;
+    border-left: 4px solid var(--fn-border);
+    transition: box-shadow .15s;
+}
+.card-collab:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.10) !important; }
+.card-collab.verde { border-left-color: var(--fn-verde); }
+.card-collab.amber { border-left-color: var(--fn-amber); }
+.card-collab.vermelho { border-left-color: var(--fn-verm); }
+
+/* Header escuro do card */
+.card-header-dark {
+    background-color: var(--fn-navy);
+    border-radius: 6px 6px 0 0;
+    padding: 12px 14px 10px;
+}
+.card-header-dark .colab-nome {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+}
+.card-header-dark .colab-sub { font-size: 0.72rem; color: rgba(255,255,255,0.65); }
+
+/* Status badge */
+.badge-situacao {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+.badge-verde  { background: var(--fn-verde-bg); color: var(--fn-verde); }
+.badge-amber  { background: var(--fn-amber-bg); color: var(--fn-amber); }
+.badge-vermelho { background: var(--fn-verm-bg);  color: var(--fn-verm); }
+
+/* ID% badge inline */
+.id-pill {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 20px;
+    border: 1px solid;
+}
+.id-pill.verde    { background: var(--fn-verde-bg);  color: var(--fn-verde); border-color: var(--fn-verde); }
+.id-pill.amber    { background: var(--fn-amber-bg);  color: var(--fn-amber); border-color: var(--fn-amber); }
+.id-pill.vermelho { background: var(--fn-verm-bg);   color: var(--fn-verm);  border-color: var(--fn-verm); }
+
+/* Info strip */
+.info-strip { background: var(--fn-info-bg); padding: 8px 0; }
+.info-chip-label { font-size: 0.58rem; text-transform: uppercase; color: var(--fn-text3); line-height: 1.2; }
+.info-chip-value { font-size: 0.78rem; font-weight: 600; color: var(--fn-text1); }
+
+/* Indicator section */
+.ind-section { padding: 8px 14px; }
+.val-col-label  { font-size: 0.57rem; text-transform: uppercase; color: var(--fn-text3); }
+.val-col-value  { font-size: 0.78rem; font-weight: 600; color: var(--fn-text1); }
+
+/* Progress bar */
+.progress { border-radius: 4px; background: var(--fn-border); }
+.bg-verde   { background-color: var(--fn-verde)  !important; }
+.bg-amber   { background-color: var(--fn-amber)  !important; }
+.bg-vermelho{ background-color: var(--fn-verm)   !important; }
+
+/* Metrics row under bar */
+.metric-label { font-size: 0.57rem; text-transform: uppercase; color: var(--fn-text3); }
+.metric-value { font-size: 0.72rem; font-weight: 600; }
+.metric-value.verde   { color: var(--fn-verde); }
+.metric-value.amber   { color: var(--fn-amber); }
+.metric-value.vermelho{ color: var(--fn-verm); }
+
+/* Footer do card */
+.card-footer-fn {
+    background: #F3F4F6;
+    border-top: 1px solid var(--fn-border);
+    border-radius: 0 0 6px 6px;
+    padding: 8px 14px;
+}
+.footer-label { font-size: 0.57rem; text-transform: uppercase; color: var(--fn-text3); }
+.footer-value { font-size: 0.78rem; font-weight: 600; }
+
+/* ── Login page ──────────────────────────────────────────────────────────── */
+.login-bg {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--fn-navy) 0%, #2a3f6b 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 16px;
+    border: 0;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.login-logo { font-size: 1.5rem; font-weight: 800; color: var(--fn-navy); letter-spacing: 0.02em; }
+.login-logo span { color: var(--fn-accent); }
+.login-subtitle { font-size: 0.8rem; color: var(--fn-text3); }
+
+/* ── Tabs ────────────────────────────────────────────────────────────────── */
+.nav-tabs { border-bottom: 2px solid var(--fn-border); overflow-x: auto; flex-wrap: nowrap; }
+.nav-tabs .nav-link {
+    color: var(--fn-text2);
+    border: 0;
+    border-bottom: 3px solid transparent;
+    padding: 10px 16px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+    margin-bottom: -2px;
+}
+.nav-tabs .nav-link:hover  { color: var(--fn-accent); border-bottom-color: var(--fn-border); }
+.nav-tabs .nav-link.active {
+    color: var(--fn-accent);
+    font-weight: 600;
+    border-bottom: 3px solid var(--fn-accent);
+    background: transparent;
+}
+
+/* ── Admin table ─────────────────────────────────────────────────────────── */
+.table-admin { font-size: 0.875rem; }
+.badge-perfil {
+    font-size: 0.7rem;
+    background: var(--fn-info-bg);
+    color: var(--fn-accent);
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+.badge-ativo   { background: var(--fn-verde-bg); color: var(--fn-verde); }
+.badge-inativo { background: var(--fn-verm-bg);  color: var(--fn-verm); }
+
+/* ── Ranking ─────────────────────────────────────────────────────────────── */
+.ranking-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--fn-border); }
+.ranking-pos  { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; }
+.ranking-pos.top1 { background: #FFD700; color: #000; }
+.ranking-pos.top2 { background: #C0C0C0; color: #000; }
+.ranking-pos.top3 { background: #CD7F32; color: #fff; }
+.ranking-pos.rest { background: var(--fn-border); color: var(--fn-text2); }
+.ranking-nome { font-size: 0.82rem; font-weight: 600; flex: 1; }
+.ranking-loja { font-size: 0.7rem; color: var(--fn-text3); }
+
+/* ── Utils ───────────────────────────────────────────────────────────────── */
+.text-verde   { color: var(--fn-verde)  !important; }
+.text-amber   { color: var(--fn-amber)  !important; }
+.text-vermelho{ color: var(--fn-verm)   !important; }
+.section-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fn-text3); font-weight: 600; }

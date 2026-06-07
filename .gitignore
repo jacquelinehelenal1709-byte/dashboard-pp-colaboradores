@@ -1,0 +1,31 @@
+# Secrets — NUNCA versionar
+.env
+
+# Banco de dados
+data/
+*.db
+*.sqlite3
+
+# Dados dos colaboradores — sensível
+dados_dashboard.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
